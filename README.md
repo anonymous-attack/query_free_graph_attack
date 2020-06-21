@@ -79,7 +79,12 @@ We evaluate on three real-world datasets Cora-ML, Citeseer and Polblogs.
 Our setting is the poisoning attack, where the target models are retrained after perturbations.
 We use GCN, Node2vec and Label Propagation as the target models to attack.
 
-<div align=center><img width="600" src="https://github.com/anonymous-attack/query_free_graph_attack/raw/master/pics/node_level_attack.png"/></div>
+| Decrease in Macro-F1 score (%) |     GCN     |   Node2vec  | Label Prop. |
+| :----------------------------: | :---------: | :---------: | :---------: |
+|              Cora-ML           |     5.27    |     8.92    |    7.13     |
+|              Citeseer          |     3.98    |     9.32    |    8.16     |
+|              Polblogs          |     5.32    |     3.79    |    6.14     |
+
 
 <!--
 We provide the evaluation codes of node-level attack and graph-level attack here. 
