@@ -162,14 +162,14 @@ The help information of the main script ```graph_level_attack.py``` is listed as
       --dataset                 str, The dataset to be perturbed on [ENZYMES, PROTEINS].
       --pert-rate               float, Perturbation rate of edges to be flipped.
       --threshold               float, Restart threshold of eigen-solutions.
-      --model                   str, The target model to be attacked on [gin, diffpool].
+      --target-model            str, The target model to be attacked on [gin, diffpool].
       --epoch                   int, The number of epochs.
       
 ### Demo
 A demo script is available by calling ```graph_level_attack.py```, as the following:
 
     python graph_level_attack.py --data-name ENZYMES --pert-rate 0.2 --threshold 1e-5 --epoch 21
-      
+    
 ### Evaluations
 For graph-level attack, we perform our attack strategy to the graph classification task. 
 We use GIN and Diffpool as our target models to attack.
