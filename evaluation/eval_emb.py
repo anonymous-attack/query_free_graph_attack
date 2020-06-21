@@ -12,8 +12,8 @@ from sklearn.metrics import f1_score
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 
 sys.path.append('%s/../' % os.path.dirname(os.path.realpath(__file__)))
-import utils as utils
 from models.node2vec import Node2vec
+import utils as utils
 
 
 parser = ArgumentParser("eval_node2vec",
