@@ -5,6 +5,7 @@ About
 -----
 
 This project is the implementation of the paper "Query-free Black-box Topology Attacks in Graph-based Learning".
+A query-free black-box adversarial attack on graphs is proposed, where the attacker has no knowledge of the target model and no query access to the model. With the mere observation of the graph topology, the proposed attack strategy aim to flip a limited number of links to mislead the graph model.
 
 Dependencies
 -----
