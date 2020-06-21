@@ -106,7 +106,7 @@ The help information of the evaluation script is listed as follows:
 
     python . -h
     
-    usage: . [-h][--dataset] [--pert-rate] [load-dir]
+    usage: . [-h][--dataset] [--pert-rate] [--load-dir]
     
     optional arguments:
       -h, --help                show this help message and exit
