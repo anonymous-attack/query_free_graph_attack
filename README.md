@@ -83,16 +83,15 @@ We use GCN, Node2vec and Label Propagation as the target models to attack.
 We provide the evaluation codes of node-level attack and graph-level attack here. 
 
 ### Node-level Attack
-For node-level attack, we perform our attack strategy to the node classification task. 
-We evaluate on three real-world datasets Cora-ML, Citeseer and Polblogs. 
+For node-level attack, we perform our attack strategy to the node classification task.  
 Our setting is the poisoning attack, where the target models are retrained after perturbations.
 We use GCN, Node2vec and Label Propagation as the target models to attack.
-If you want to attack GCN, you can run ```evaluation/eval_gcn.py```.
-If you want to attack Node2vec, you can run ```evaluation/eval_emb.py```.
-If you want to attack Label Propagation, you can run ```evaluation/eval_lp.py```.
+
+#### Datasets
+We evaluate on three real-world datasets Cora-ML, Citeseer and Polblogs. 
+The preprocessed version is given in ```data``` directory where dataset is in ```npz``` format.
 
 #### Evaluation Script
-
 If you want to attack GCN, you can run ```evaluation/eval_gcn.py```.
 The help information of the evaluation script is listed as follows:
 
@@ -153,9 +152,12 @@ The help information of the evaluation script is listed as follows:
  
 ### Graph-level Attack
 For graph-level attack, we perform our attack strategy to the graph classification task. 
-We evaluate on two protein datasets: Enzymes and Proteins. 
 We use GIN and Diffpool as our target models to attack.
+
+#### Datasets
+We evaluate on two protein datasets: Enzymes and Proteins. 
+We call ```torch_geometric``` package to download and load these two datasets.
+
+#### Evaluation Script
 If you want to attack GIN, you can run ```evaluation/eval_gin.py```.
 If you want to attack Diffpool, you can run ```evaluation/eval_diffpool.py```.
-
-      
