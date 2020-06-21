@@ -35,9 +35,9 @@ pip install -r requirements.txt
 In addition, CUDA 10.0 has been used in our project. Although not all dependencies are mentioned in the installation instruction links above, you can find most of the libraries in the package repository of a regular Linux distribution.
 
 
-Usage
+Node-level Attack
 -----
-We focus on the query-free black-box attack on graphs, in which the attacker could only observe the input graph, but has no knowledge about the victim model and can not query any examples.
+Given the adjacency matrix of input graph, our attacker aims to flip a limited number of links. 
 
 ### Input Format
 Following our settings, we only need the structure information of input graphs to perform our attacks.
@@ -51,11 +51,11 @@ When using your own dataset, you must provide:
 The program outputs to a file in ```npz``` format which contains the adversarial edges.
 
 ### Main Script
-The help information of the main script ```attack.py``` is listed as follows:
+The help information of the main script ```node_level_attack.py``` is listed as follows:
 
-    python attack.py -h
+    python node_level_attack.py -h
     
-    usage: attack.py [-h][--dataset] [--pert-rate] [--threshold] [--save-dir]
+    usage: node_level_attack.py [-h][--dataset] [--pert-rate] [--threshold] [--save-dir]
     
     optional arguments:
       -h, --help                Show this help message and exit
@@ -69,21 +69,11 @@ We include all three benchmark datasets Cora-ML, Citeseer and Polblogs in the ``
 Then a demo script is available by calling ```attack.py```, as the following:
 
     python attack.py --data-name cora --pert-rate 0.1 --threshold 0.03 
-    
-    
-Evaluations
------
+      
+### Evaluations
 Our evaluations depend on the output adversarial edges by the above attack model.
 We provide the evaluation codes of our attack strategy on the node classification task here. 
 We evaluate on three real-world datasets Cora-ML, Citeseer and Polblogs. 
-Our setting is the poisoning attack, where the target models are retrained after perturbations.
-We use GCN, Node2vec and Label Propagation as the target models to attack.
-
-
-We provide the evaluation codes of node-level attack and graph-level attack here. 
-
-### Node-level Attack
-For node-level attack, we perform our attack strategy to the node classification task.  
 Our setting is the poisoning attack, where the target models are retrained after perturbations.
 We use GCN, Node2vec and Label Propagation as the target models to attack.
 
@@ -150,7 +140,37 @@ The help information of the evaluation script is listed as follows:
  
 
  
-### Graph-level Attack
+Graph-level Attack
+-----
+Given a set of input graphs, our attacker aims to flip a limited number of links for each graph. 
+
+
+### Input Format
+When using your own dataset, you must provide:
+
+* the adjacency matrix of a set of graphs.
+
+### Main Script
+The help information of the main script ```graph_level_attack.py``` is listed as follows:
+
+    python graph_level_attack.py -h
+    
+    usage: graph_level_attack.py [-h][--dataset] [--pert-rate] [--threshold] [--model] [--epoch]
+    
+    optional arguments:
+      -h, --help                Show this help message and exit
+      --dataset                 str, The dataset to be perturbed on [ENZYMES, PROTEINS].
+      --pert-rate               float, Perturbation rate of edges to be flipped.
+      --threshold               float, Restart threshold of eigen-solutions.
+      --model                   str, The target model to be attacked on [gin, diffpool].
+      --epoch                   int, The number of epochs.
+      
+### Demo
+A demo script is available by calling ```graph_level_attack.py```, as the following:
+
+    python graph_level_attack.py --data-name ENZYMES --pert-rate 0.2 --threshold 1e-5 --epoch 21
+      
+### Evaluations
 For graph-level attack, we perform our attack strategy to the graph classification task. 
 We use GIN and Diffpool as our target models to attack.
 
