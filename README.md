@@ -79,14 +79,7 @@ We evaluate on three real-world datasets Cora-ML, Citeseer and Polblogs.
 Our setting is the poisoning attack, where the target models are retrained after perturbations.
 We use GCN, Node2vec and Label Propagation as the target models to attack.
 
-| Decrease in Macro-F1 score (%) |     GCN     |   Node2vec  | Label Prop. |
-| :----------------------------: | :---------: | :---------: | :---------: |
-|              Cora-ML           |     5.27    |     8.92    |    7.13     |
-|              Citeseer          |     3.98    |     9.32    |    8.16     |
-|              Polblogs          |     5.32    |     3.79    |    6.14     |
 
-
-<!--
 We provide the evaluation codes of node-level attack and graph-level attack here. 
 
 ### Node-level Attack
@@ -97,16 +90,8 @@ We use GCN, Node2vec and Label Propagation as the target models to attack.
 If you want to attack GCN, you can run ```evaluation/eval_gcn.py```.
 If you want to attack Node2vec, you can run ```evaluation/eval_emb.py```.
 If you want to attack Label Propagation, you can run ```evaluation/eval_lp.py```.
-     
-### Graph-level Attack
-For graph-level attack, we perform our attack strategy to the graph classification task. 
-We evaluate on two protein datasets: Enzymes and Proteins. 
-We use GIN and Diffpool as our target models to attack.
-If you want to attack GIN, you can run ```evaluation/eval_gin.py```.
-If you want to attack Diffpool, you can run ```evaluation/eval_diffpool.py```.
--->
 
-### Evaluation Script
+#### Evaluation Script
 
 If you want to attack GCN, you can run ```evaluation/eval_gcn.py```.
 The help information of the evaluation script is listed as follows:
@@ -155,3 +140,22 @@ The help information of the evaluation script is listed as follows:
       --dataset                 str, The dataset to be evluated on [cora, citeseer, polblogs].
       --pert-rate               float, Perturbation rate of edges to be flipped.
       --load-dir                str, File directory to load adversarial edges.
+
+
+#### Performance
+| Decrease in Macro-F1 score (%) |     GCN     |   Node2vec  | Label Prop. |
+| :----------------------------: | :---------: | :---------: | :---------: |
+|              Cora-ML           |     5.27    |     8.92    |    7.13     |
+|              Citeseer          |     3.98    |     9.32    |    8.16     |
+|              Polblogs          |     5.32    |     3.79    |    6.14     |
+ 
+
+ 
+### Graph-level Attack
+For graph-level attack, we perform our attack strategy to the graph classification task. 
+We evaluate on two protein datasets: Enzymes and Proteins. 
+We use GIN and Diffpool as our target models to attack.
+If you want to attack GIN, you can run ```evaluation/eval_gin.py```.
+If you want to attack Diffpool, you can run ```evaluation/eval_diffpool.py```.
+
+      
