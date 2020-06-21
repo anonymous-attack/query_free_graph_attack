@@ -30,19 +30,17 @@ pip install -r requirements.txt
 In addition, CUDA 10.0 has been used in our project. Although not all dependencies are mentioned in the installation instruction links above, you can find most of the libraries in the package repository of a regular Linux distribution.
 
 
-Input Format
+Usage
 -----
+We focus on the query-free black-box attack on graphs, in which the attacker could only observe the input graph, but has no knowledge about the victim model and can not query any examples.
+
+### Input Format
+Following our settings, we only need the structure information of input graphs to perform our attacks.
 An example data format is given in ```data``` where dataset is in ```npz``` format.
 
 When using your own dataset, you must provide:
 
 * an N by N adjacency matrix (N is the number of nodes).
-* an N by C one-hot label matrix (C is the number of classes).
-* (OPTIONAL) an N by D feature matrix (D is the dimension of node features).
-
-Usage
------
-We focus on the query-free black-box attack on graphs, in which the attacker could only observe the input graph, but has no knowledge about the victim model and can not query any examples.
 
 ### Main Script
 The help information of the main script ```attack.py``` is listed as follows:
