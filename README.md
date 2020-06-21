@@ -40,8 +40,11 @@ When using your own dataset, you must provide:
 * an N by C one-hot label matrix (C is the number of classes).
 * (OPTIONAL) an N by D feature matrix (D is the dimension of node features).
 
-How to run 
+Usage
 -----
+We focus on the query-free black-box attack on graphs, in which the attacker could only observe the input graph, but has no knowledge about the victim model and can not query any examples.
+
+### Main Script
 The help information of the main script ```attack.py``` is listed as follows:
 
     python attack.py -h
@@ -59,3 +62,7 @@ The help information of the main script ```attack.py``` is listed as follows:
 To reproduce the results that reported in the paper, you can run the following command:
 
     python attack.py --data-name cora --pert-rate 0.1 --threshold 0.03 
+    
+    
+Evaluations
+-----
