@@ -44,9 +44,9 @@ How to run
 -----
 The help information of the main script ```attack.py``` is listed as follows:
 
-    python Main.py -h
+    python attack.py -h
     
-    usage: Main.py [-h][--dataset] [--pert-rate] [--threshold] 
+    usage: attack.py [-h][--dataset] [--pert-rate] [--threshold] 
     
     optional arguments:
       -h, --help                show this help message and exit
