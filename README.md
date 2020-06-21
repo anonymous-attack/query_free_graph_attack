@@ -72,6 +72,15 @@ Then a demo script is available by calling ```attack.py```, as the following:
 Evaluations
 -----
 Our evaluations depend on the output adversarial edges by the above attack model.
+We provide the evaluation codes of our attack strategy on the node classification task here. 
+We evaluate on three real-world datasets Cora-ML, Citeseer and Polblogs. 
+Our setting is the poisoning attack, where the target models are retrained after perturbations.
+We use GCN, Node2vec and Label Propagation as the target models to attack.
+If you want to attack GCN, you can run ```evaluation/eval_gcn.py```.
+If you want to attack Node2vec, you can run ```evaluation/eval_emb.py```.
+If you want to attack Label Propagation, you can run ```evaluation/eval_lp.py```.
+
+<!--
 We provide the evaluation codes of node-level attack and graph-level attack here. 
 
 ### Node-level Attack
@@ -90,6 +99,7 @@ We evaluate on two protein datasets: Enzymes and Proteins.
 We use GIN and Diffpool as our target models to attack.
 If you want to attack GIN, you can run ```evaluation/eval_gin.py```.
 If you want to attack Diffpool, you can run ```evaluation/eval_diffpool.py```.
+-->
 
 ### Evaluation Script
 The help information of the evaluation script is listed as follows:
