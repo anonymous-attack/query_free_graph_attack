@@ -42,6 +42,9 @@ When using your own dataset, you must provide:
 
 * an N by N adjacency matrix (N is the number of nodes).
 
+### Output Format
+The program outputs to a file in ```npz``` format which contains the edges to be perturbed/flipped.
+
 ### Main Script
 The help information of the main script ```attack.py``` is listed as follows:
 
