@@ -42,10 +42,6 @@ threshold = args.threshold
 epoch = args.epoch
 max_nodes = 150
 
-# seed = 1
-# torch.manual_seed(seed)
-# if torch.cuda.is_available():
-#    torch.cuda.manual_seed_all(seed)
 
 class MyFilter(object):
     def __call__(self, data):
@@ -62,8 +58,6 @@ train_dataset = dataset[2 * n:]
 test_loader = DenseDataLoader(test_dataset, batch_size=20)
 val_loader = DenseDataLoader(val_dataset, batch_size=20)
 train_loader = DenseDataLoader(train_dataset, batch_size=20)
-# for g in tqdm(test_dataset):
-#     print(g.adj.shape)
 
 class GNN(torch.nn.Module):
     def __init__(self, in_channels, hidden_channels, out_channels,
@@ -97,9 +91,9 @@ class GNN(torch.nn.Module):
         #batch_size, num_nodes, in_channels = x.size()
 
         x0 = x
-        x1 = self.bn(1, F.relu(self.conv1(x0, adj, mask, self.add_loop)))
-        x2 = self.bn(2, F.relu(self.conv2(x1, adj, mask, self.add_loop)))
-        x3 = self.bn(3, F.relu(self.conv3(x2, adj, mask, self.add_loop)))
+        x1 = self.bn(1, F.relu(self.conv1(x0, adj, mask)))
+        x2 = self.bn(2, F.relu(self.conv2(x1, adj, mask)))
+        x3 = self.bn(3, F.relu(self.conv3(x2, adj, mask)))
 
         x = torch.cat([x1, x2, x3], dim=-1)
 
@@ -144,7 +138,6 @@ class Net(torch.nn.Module):
         x = F.relu(self.lin1(x))
         x = self.lin2(x)
         return F.log_softmax(x, dim=-1), l1 + l2, e1 + e2
-
 
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
