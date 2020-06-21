@@ -7,6 +7,8 @@ About
 This project is the implementation of the paper "Query-free Black-box Topology Attacks in Graph-based Learning".
 A query-free black-box adversarial attack on graphs is proposed, where the attacker has no knowledge of the target model and no query access to the model. With the mere observation of the graph topology, the proposed attack strategy aim to flip a limited number of links to mislead the graph model.
 
+This repo contains the codes, data and results reported in the paper.
+
 Dependencies
 -----
 
@@ -44,7 +46,7 @@ When using your own dataset, you must provide:
 * an N by N adjacency matrix (N is the number of nodes).
 
 ### Output Format
-The program outputs to a file in ```npz``` format which contains the edges to be perturbed/flipped.
+The program outputs to a file in ```npz``` format which contains the adversarial edges.
 
 ### Main Script
 The help information of the main script ```attack.py``` is listed as follows:
@@ -60,11 +62,45 @@ The help information of the main script ```attack.py``` is listed as follows:
       --threshold               float, restart threshold of eigen-solutions.
       --save-dir                str, file directory to save outputs.
       
-
-To reproduce the results that reported in the paper, you can run the following command:
+### Demo
+We include all three benchmark datasets Cora-ML, Citeseer and Polblogs in the ```data``` directory.
+Then a demo script is available by calling ```attack.py```, as the following:
 
     python attack.py --data-name cora --pert-rate 0.1 --threshold 0.03 
     
     
 Evaluations
 -----
+Our evaluations depend on the output adversarial edges by the above attack model.
+We provide the evaluation codes of node-level attack and graph-level attack here. 
+
+### Node-level Attack
+For node-level attack, we perform our attack strategy to the node classification task. 
+We evaluate on three real-world datasets Cora-ML, Citeseer and Polblogs. 
+Our setting is the poisoning attack, where the target models are retrained after perturbations.
+We use GCN, Node2vec and Label Propagation as the target models to attack.
+If you want to attack GCN, you can run ```evaluation/eval_gcn.py```.
+If you want to attack Node2vec, you can run ```evaluation/eval_emb.py```.
+If you want to attack Label Propagation, you can run ```evaluation/eval_lp.py```.
+file directory to load adversarial edges.
+     
+### Graph-level Attack
+For graph-level attack, we perform our attack strategy to the graph classification task. 
+We evaluate on two protein datasets: Enzymes and Proteins. 
+We use GIN and Diffpool as our target models to attack.
+If you want to attack GIN, you can run ```evaluation/eval_gin.py```.
+If you want to attack Diffpool, you can run ```evaluation/eval_diffpool.py```.
+
+### Evaluation Script
+The help information of the evaluation script is listed as follows:
+
+    python . -h
+    
+    usage: . [-h][--dataset] [--pert-rate] [load-dir]
+    
+    optional arguments:
+      -h, --help                show this help message and exit
+      --dataset                 str, the dataset to be perturbed on [cora, citeseer, polblogs].
+      --pert-rate               float, perturbation rate of edges to be flipped.
+      --load-dir                str, file directory to load adversarial edges.
+       
