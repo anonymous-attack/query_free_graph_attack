@@ -3,8 +3,6 @@
 
 
 import numpy as np
-import scipy.sparse as sp
-import scipy.linalg as spl
 import sys, os, torch
 
 from sklearn.metrics import f1_score

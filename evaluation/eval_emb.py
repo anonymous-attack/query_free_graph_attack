@@ -13,7 +13,8 @@ from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 
 sys.path.append('%s/../' % os.path.dirname(os.path.realpath(__file__)))
 import utils as utils
-from models.embs.node2vec import Node2vec
+from models.node2vec import Node2vec
+
 
 parser = ArgumentParser("eval_node2vec",
                         formatter_class=ArgumentDefaultsHelpFormatter,
