@@ -22,15 +22,18 @@ parser = ArgumentParser("eval_gcn",
                         formatter_class=ArgumentDefaultsHelpFormatter,
                         conflict_handler='resolve')
 parser.add_argument("--dataset", default="cora",
-                    help="the dataset to be evaluated on [cora, citeseer, polblogs].")
+                    help="The dataset to be evaluated on [cora, citeseer, polblogs].")
 parser.add_argument("--pert-rate", default=0.1, type=float,
-                    help='perturbation rate of edges to be flipped.')
+                    help='Perturbation rate of edges to be flipped.')
+parser.add_argument('--dimensions', type=int, default=16,
+	                help='Dimensions of GCN hidden layer. Default is 16.')
 parser.add_argument("--load-dir", default="../outputs",
-                    help='file directory to load adversarial edges.')
+                    help='File directory to load adversarial edges.')
 args = parser.parse_args()
 
 dataset = args.dataset
 prec_flips = args.pert_rate
+dim = args.dimensions
 load_dir = '{}/{}.flips.npy'.format(args.load_dir, dataset)
 
 
@@ -61,10 +64,6 @@ _An = utils.preprocess_graph(_A_obs)
 sizes = [16, _K]
 degrees = _A_obs.sum(0).A1
 
-# generalized eigenvalues/eigenvectors
-A_tilde = _A_obs + sp.eye(_A_obs.shape[0])
-vals_org, vecs_org = spl.eigh(A_tilde.toarray(), np.diag(A_tilde.sum(0).A1))
-
 # load adversarial edges
 n_flips = int(prec_flips * _E)
 flips = np.load(load_dir)[:n_flips]
@@ -84,8 +83,8 @@ split_train, split_val, split_unlabeled = utils.train_val_test_split_tabular(tup
 class GCN(torch.nn.Module):
     def __init__(self, n_input, n_output):
         super(GCN, self).__init__()
-        self.conv1 = GCNConv(n_input, 16)
-        self.conv2 = GCNConv(16, n_output)
+        self.conv1 = GCNConv(n_input, dim)
+        self.conv2 = GCNConv(dim, n_output)
 
         self.reg_params = self.conv1.parameters()
         self.non_reg_params = self.conv2.parameters()

@@ -22,10 +22,10 @@ parser.add_argument("--dataset", default="cora",
                     help="the dataset to be perturbed on [cora, citeseer, polblogs].")
 parser.add_argument("--pert-rate", default=0.1, type=float,
                     help='perturbation rate of edges to be flipped.')
+parser.add_argument('--dimensions', type=int, default=32,
+	                help='Output embedding dimensions of Node2vec. Default is 32.')
 parser.add_argument('--window-size', type=int, default=5,
                     help='Context size for optimization. Default is 5.')
-parser.add_argument('--dimensions', type=int, default=32,
-	                help='Number of dimensions. Default is 32.')
 parser.add_argument('--walk-length', type=int, default=80,
                     help='Length of walk per source. Default is 80.')
 parser.add_argument('--walk-num', type=int, default=10,

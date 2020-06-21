@@ -16,11 +16,9 @@ parser = ArgumentParser("eval_lp",
                         formatter_class=ArgumentDefaultsHelpFormatter,
                         conflict_handler='resolve')
 parser.add_argument("--dataset", default="cora",
-                    help="the dataset to be evaluated on [cora, citeceer, polblogs]")
+                    help="The dataset to be evaluated on [cora, citeceer, polblogs].")
 parser.add_argument("--pert-rate", default=0.1, type=float,
-                    help='perturbation rate of edges to be flipped [0.05, 0.10, 0.15]')
-parser.add_argument("--eval", default="static",
-                    help='evaluation mode [static, random]')
+                    help='Perturbation rate of edges to be flipped.')
 parser.add_argument("--load-dir", default="../outputs",
                     help='file directory to load adversarial edges.')
 
