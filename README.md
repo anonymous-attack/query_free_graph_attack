@@ -46,13 +46,14 @@ The help information of the main script ```attack.py``` is listed as follows:
 
     python attack.py -h
     
-    usage: attack.py [-h][--dataset] [--pert-rate] [--threshold] 
+    usage: attack.py [-h][--dataset] [--pert-rate] [--threshold] [--save-dir]
     
     optional arguments:
       -h, --help                show this help message and exit
       --dataset                 str, the dataset to be perturbed on [cora, citeseer, polblogs].
       --pert-rate               float, perturbation rate of edges to be flipped.
       --threshold               float, restart threshold of eigen-solutions.
+      --save-dir                str, file directory to save outputs.
       
 
 To reproduce the results that reported in the paper, you can run the following command:
