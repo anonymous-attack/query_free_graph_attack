@@ -22,7 +22,9 @@ The script has been tested running under Python 3.7.7, with the following packag
 - `tqdm==4.46.1`
 - `torch==1.4.1`
 - `torch_geometric==1.5.0`
-
+  - torch-spline-conv==1.2.0
+  - torch-scatter==2.0.4
+  - torch-sparse==0.6.0
 
 Some Python module dependencies are listed in `requirements.txt`, which can be easily installed with pip:
 
