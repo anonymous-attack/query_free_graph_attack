@@ -161,3 +161,10 @@ We call ```torch_geometric``` package to download and load these two datasets.
 #### Evaluation Script
 If you want to attack GIN, you can run ```evaluation/eval_gin.py```.
 If you want to attack Diffpool, you can run ```evaluation/eval_diffpool.py```.
+
+#### Performance
+| Decrease in Macro-F1 score (%) |     GIN     |   Diffpool  | 
+| :----------------------------: | :---------: | :---------: | 
+|              Proteins          |    13.53    |    24.88    |   
+|              Enzymes           |    39.90    |    39.62    |   
+
