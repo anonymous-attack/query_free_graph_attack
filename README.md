@@ -173,6 +173,7 @@ A demo script is available by calling ```graph_level_attack.py```, as the follow
 ### Evaluations
 For graph-level attack, we perform our attack strategy to the graph classification task. 
 We use GIN and Diffpool as our target models to attack.
+By running the script ```graph_level_attack.py```, you can directly get the evaluation results.
 
 #### Datasets
 We evaluate on two protein datasets: Enzymes and Proteins. 
