@@ -35,7 +35,7 @@ pip install -r requirements.txt
 In addition, CUDA 10.0 has been used in our project. Although not all dependencies are mentioned in the installation instruction links above, you can find most of the libraries in the package repository of a regular Linux distribution.
 
 
-Node-level Attack
+Usage: Node-level Attack
 -----
 Given the adjacency matrix of input graph, our attacker aims to flip a limited number of links. 
 
@@ -140,7 +140,7 @@ The help information of the evaluation script is listed as follows:
  
 
  
-Graph-level Attack
+Usage: Graph-level Attack
 -----
 Given a set of input graphs, our attacker aims to flip a limited number of links for each graph. 
 
