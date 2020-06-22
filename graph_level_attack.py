@@ -41,7 +41,7 @@ data_name = args.dataset
 prec_flips = args.pert_rate
 threshold = args.threshold
 target_model = args.target_model
-epoch = args.epoch
+epochs = args.epoch
 max_nodes = 150
 
 if target_model == 'diffpool':
@@ -78,7 +78,7 @@ elif target_model == 'gin':
 optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
 
 
-for epoch in range(1, 21):
+for epoch in range(1, epochs):
     if target_model == 'diffpool':
         train_loss = diffpool.train(epoch, model, optimizer, train_loader, train_dataset, device)
         train_acc = diffpool.test(train_loader, model, device)
@@ -210,14 +210,24 @@ def propose_attack(model, g, prec_flips=0.2, threshold=1e-5):
         else:
             A_tack[e[0], e[1]] = A_tack[e[1], e[0]] = 0
 
-    # performace
-    adj_tack = torch.FloatTensor(A_tack.toarray()).to(device)
+    if target_model == 'diffpool':
+        # performace
+        adj_tack = torch.FloatTensor(A_tack.toarray()).to(device)
 
-    if g.x == None:
-        g_x = torch.eye(_N).to(device)
-        pred = model(g_x, adj_tack)[0].max(dim=1)[1]
-    else:
-        pred = model(g.x.to(device), adj_tack)[0].max(dim=1)[1]
+        if g.x == None:
+            g_x = torch.eye(_N).to(device)
+            pred = model(g_x, adj_tack)[0].max(dim=1)[1]
+        else:
+            pred = model(g.x.to(device), adj_tack)[0].max(dim=1)[1]
+    elif target_model == 'gin':
+        new_edge_index = []
+        new_edge_index.append(A_tack.tocoo().row.tolist())
+        new_edge_index.append(A_tack.tocoo().col.tolist())
+        edge_index_new = torch.LongTensor(new_edge_index).to(device)
+
+        output = model(g.x.to(device), edge_index_new, 1, minibatch=False)
+        pred = output.max(dim=1)[1]
+
     correct = pred.eq(g.y.to(device)).sum().item()
 
     return correct
