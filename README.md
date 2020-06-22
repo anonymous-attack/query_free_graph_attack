@@ -75,7 +75,7 @@ Our evaluations depend on the output adversarial edges by the above attack model
 We provide the evaluation codes of our attack strategy on the node classification task here. 
 We evaluate on three real-world datasets Cora-ML, Citeseer and Polblogs. 
 Our setting is the poisoning attack, where the target models are retrained after perturbations.
-We use GCN, Node2vec and Label Propagation as the target models to attack.
+We use [GCN](https://arxiv.org/pdf/1609.02907.pdf), [Node2vec](https://arxiv.org/pdf/1607.00653.pdf) and [Label Propagation](http://mlg.eng.cam.ac.uk/zoubin/papers/CMU-CALD-02-107.pdf) as the target models to attack.
 
 #### Datasets
 We evaluate on three real-world datasets Cora-ML, Citeseer and Polblogs. 
@@ -172,7 +172,7 @@ A demo script is available by calling ```graph_level_attack.py```, as the follow
     
 ### Evaluations
 For graph-level attack, we perform our attack strategy to the graph classification task. 
-We use GIN and Diffpool as our target models to attack.
+We use [GIN](https://arxiv.org/pdf/1810.00826.pdf) and [Diffpool](https://arxiv.org/pdf/1806.08804.pdf) as our target models to attack.
 By running the script ```graph_level_attack.py```, you can directly get the evaluation results.
 
 #### Datasets
