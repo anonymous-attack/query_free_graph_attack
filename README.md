@@ -5,7 +5,7 @@ About
 -----
 
 This project is the implementation of the paper "Blindfolded Attackers Still Threatening: Strict Black-Box Adversarial Attacks on Graphs".
-A query-free black-box adversarial attack on graphs is proposed, where the attacker has no knowledge of the target model and no query access to the model. With the mere observation of the graph topology, the proposed attack strategy aim to flip a limited number of links to mislead the graph model.
+A strict black-box adversarial attack on graphs is proposed, where the attacker has no knowledge of the target model and no query access to the model. With the mere observation of the graph topology, the proposed attack strategy aim to flip a limited number of links to mislead the graph model.
 
 This repo contains the codes, data and results reported in the paper.
 
