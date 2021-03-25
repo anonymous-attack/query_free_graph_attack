@@ -130,14 +130,14 @@ The help information of the evaluation script is listed as follows:
       --pert-rate               float, Perturbation rate of edges to be flipped.
       --load-dir                str, File directory to load adversarial edges.
 
-
+<!--
 #### Performance
 | Decrease in Macro-F1 score (%) |     GCN     |   Node2vec  | Label Prop. |
 | :----------------------------: | :---------: | :---------: | :---------: |
 |              Cora-ML           |     5.27    |     8.92    |    7.13     |
 |              Citeseer          |     3.98    |     9.32    |    8.16     |
 |              Polblogs          |     5.32    |     3.79    |    6.14     |
- 
+-->
 
  
 Usage: Graph-level Attack
@@ -179,9 +179,10 @@ By running the script ```graph_level_attack.py```, you can directly get the eval
 We evaluate on two protein datasets: Enzymes and Proteins. 
 We call ```torch_geometric``` package to download and load these two datasets.
 
+<!--
 #### Performance
 | Decrease in Macro-F1 score (%) |     GIN     |   Diffpool  | 
 | :----------------------------: | :---------: | :---------: | 
 |              Proteins          |    13.53    |    24.88    |   
 |              Enzymes           |    39.90    |    39.62    |   
-
+-->
